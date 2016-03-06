@@ -938,6 +938,7 @@ void start_tty(struct tty_struct *tty)
 
 EXPORT_SYMBOL(start_tty);
 
+<<<<<<< HEAD
 /* We limit tty time update visibility to every 8 seconds or so. */
 static void tty_update_time(struct timespec *time)
 {
@@ -946,6 +947,8 @@ static void tty_update_time(struct timespec *time)
 		time->tv_sec = sec;
 }
 
+=======
+>>>>>>> parent of 3b0bc43... 3.4.42-3.4.43
 /**
  *	tty_read	-	read method for tty device files
  *	@file: pointer to tty file
@@ -982,10 +985,8 @@ static ssize_t tty_read(struct file *file, char __user *buf, size_t count,
 	else
 		i = -EIO;
 	tty_ldisc_deref(ld);
-
 	if (i > 0)
-		tty_update_time(&inode->i_atime);
-
+		inode->i_atime = current_fs_time(inode->i_sb);
 	return i;
 }
 
@@ -1088,7 +1089,7 @@ static inline ssize_t do_tty_write(
 	}
 	if (written) {
 		struct inode *inode = file->f_path.dentry->d_inode;
-		tty_update_time(&inode->i_mtime);
+		inode->i_mtime = current_fs_time(inode->i_sb);
 		ret = written;
 	}
 out:

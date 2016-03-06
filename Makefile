@@ -1,6 +1,10 @@
 VERSION = 3
 PATCHLEVEL = 4
+<<<<<<< HEAD
 SUBLEVEL = 53
+=======
+SUBLEVEL = 42
+>>>>>>> parent of 3b0bc43... 3.4.42-3.4.43
 EXTRAVERSION =
 NAME = Saber-toothed Squirrel
 

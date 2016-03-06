@@ -2443,9 +2443,6 @@ static void sit_add_v4_addrs(struct inet6_dev *idev)
 static void init_loopback(struct net_device *dev)
 {
 	struct inet6_dev  *idev;
-	struct net_device *sp_dev;
-	struct inet6_ifaddr *sp_ifa;
-	struct rt6_info *sp_rt;
 
 	/* ::1 */
 
@@ -2457,6 +2454,7 @@ static void init_loopback(struct net_device *dev)
 	}
 
 	add_addr(idev, &in6addr_loopback, 128, IFA_HOST);
+<<<<<<< HEAD
 
 	/* Add routes to other interface's IPv6 addresses */
 	for_each_netdev(dev_net(dev), sp_dev) {
@@ -2483,6 +2481,8 @@ static void init_loopback(struct net_device *dev)
 		}
 		read_unlock_bh(&idev->lock);
 	}
+=======
+>>>>>>> parent of 3b0bc43... 3.4.42-3.4.43
 }
 
 static void addrconf_add_linklocal(struct inet6_dev *idev, const struct in6_addr *addr)
